@@ -161,7 +161,7 @@ export default function HabitDetailOverlay({
     };
 
     return (
-        <div className="fixed inset-0 z-[60] flex items-end justify-center">
+        <div className="fixed inset-0 z-[100] flex items-end justify-center">
             {/* Backdrop */}
             <motion.div
                 initial={{ opacity: 0 }}

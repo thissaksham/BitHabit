@@ -150,10 +150,10 @@ export default function Step1Activity({
                     {showColorPicker && (
                         <>
                             <div
-                                className="fixed inset-0 z-40"
+                                className="fixed inset-0 z-[110]"
                                 onClick={() => setShowColorPicker(false)}
                             />
-                            <div className="absolute right-0 mt-2 p-3 bg-card-dark rounded-xl shadow-xl border border-white/10 z-50">
+                            <div className="absolute right-0 mt-2 p-3 bg-card-dark rounded-xl shadow-xl border border-white/10 z-[120]">
                                 <div className="flex flex-wrap gap-2 w-[200px]">
                                     {colorOptions.map((color) => (
                                         <button

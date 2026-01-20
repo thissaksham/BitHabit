@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import BottomNav from "@/components/layout/BottomNav";
 import ReminderManager from "@/components/managers/ReminderManager";
+import PWAManager from "@/components/managers/PWAManager";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 
 const inter = Inter({
@@ -34,11 +35,12 @@ export default function RootLayout({
                 <ErrorBoundary>
                     <div id="root-container">
                         <div className="abstract-background" />
-                        <main className="relative z-10 pb-20">
+                        <main className="flex-1 relative overflow-hidden">
                             {children}
                         </main>
                         <BottomNav />
                         <ReminderManager />
+                        <PWAManager />
                     </div>
                 </ErrorBoundary>
             </body>

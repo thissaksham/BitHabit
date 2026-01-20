@@ -52,7 +52,7 @@ export default function Toast({
                         stiffness: 400,
                         damping: 25
                     }}
-                    className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] ${colors[type]} backdrop-blur-lg rounded-2xl px-6 py-4 shadow-2xl border border-white/20`}
+                    className={`fixed top-6 left-1/2 -translate-x-1/2 z-[200] ${colors[type]} backdrop-blur-lg rounded-2xl px-6 py-4 shadow-2xl border border-white/20`}
                 >
                     <div className="flex items-center gap-3 text-white">
                         {icons[type]}

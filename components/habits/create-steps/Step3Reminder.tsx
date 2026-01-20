@@ -210,10 +210,10 @@ export default function Step3Reminder({
                 editingIndex !== null && (
                     <>
                         <div
-                            className="fixed inset-0 z-40 bg-black/50"
+                            className="fixed inset-0 z-[110] bg-black/50"
                             onClick={() => setEditingIndex(null)}
                         />
-                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
                             <div className="bg-card-dark p-6 rounded-2xl border border-white/10 shadow-2xl w-full max-w-sm">
                                 <h4 className="text-white text-lg font-semibold mb-4 text-center">
                                     {editingIndex === -1 ? 'Add time' : 'Edit time'}
