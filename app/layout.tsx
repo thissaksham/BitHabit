@@ -4,6 +4,7 @@ import "./globals.css";
 import BottomNav from "@/components/layout/BottomNav";
 import ReminderManager from "@/components/managers/ReminderManager";
 import PWAManager from "@/components/managers/PWAManager";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 
 const inter = Inter({
@@ -41,6 +42,7 @@ export default function RootLayout({
                         <BottomNav />
                         <ReminderManager />
                         <PWAManager />
+                        <GoogleAnalytics />
                     </div>
                 </ErrorBoundary>
             </body>

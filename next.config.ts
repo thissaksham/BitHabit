@@ -13,6 +13,8 @@ const withPWA = withPWAInit({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    basePath: process.env.NODE_ENV === "production" ? "/BitHabit" : "",
+    assetPrefix: process.env.NODE_ENV === "production" ? "/BitHabit/" : "",
     typescript: {
         ignoreBuildErrors: false,
     },
