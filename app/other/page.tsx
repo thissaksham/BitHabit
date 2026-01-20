@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeader from "@/components/layout/PageHeader";
-import { Download, Upload, ShieldCheck, Database, RefreshCcw, Coffee, Heart } from "lucide-react";
+import { Download, Upload, ShieldCheck, Database, RefreshCcw, Coffee, Heart, Github } from "lucide-react";
 import { dataService } from "@/lib/dataService";
 import { useState, useRef } from "react";
 import Toast from "@/components/ui/Toast";
@@ -115,26 +115,43 @@ export default function OtherPage() {
                     </motion.button>
 
                     {/* Support Card */}
-                    <motion.a
-                        href="https://buymeacoffee.com/thissaksham"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="flex items-center gap-4 bg-white/5 hover:bg-white/10 p-6 rounded-[2rem] border border-white/10 transition-all active:scale-[0.98] text-left group"
-                    >
-                        <div className="w-14 h-14 rounded-2xl bg-yellow-500/20 flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors">
-                            <Coffee className="w-7 h-7 text-yellow-400" />
-                        </div>
-                        <div className="flex-1">
-                            <div className="flex items-center gap-2">
-                                <h3 className="text-white font-bold text-lg leading-tight">Buy me a coffee</h3>
-                                <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+                    <div className="grid grid-cols-2 gap-4">
+                        <motion.a
+                            href="https://github.com/thissaksham/habit-tracker-app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.3 }}
+                            className="flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 p-6 rounded-[2rem] border border-white/10 transition-all active:scale-[0.98] group text-center"
+                        >
+                            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                <Github className="w-6 h-6 text-white" />
                             </div>
-                            <p className="text-white/40 text-sm mt-1">Support the developer</p>
-                        </div>
-                    </motion.a>
+                            <div>
+                                <h3 className="text-white font-bold text-base">Star on GitHub</h3>
+                                <p className="text-white/40 text-[11px] mt-0.5">Open Source</p>
+                            </div>
+                        </motion.a>
+
+                        <motion.a
+                            href="https://buymeacoffee.com/thissaksham"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.35 }}
+                            className="flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 p-6 rounded-[2rem] border border-white/10 transition-all active:scale-[0.98] group text-center"
+                        >
+                            <div className="w-12 h-12 rounded-2xl bg-yellow-500/10 flex items-center justify-center group-hover:bg-yellow-500/20 transition-colors">
+                                <Heart className="w-6 h-6 text-yellow-500 fill-yellow-500" />
+                            </div>
+                            <div>
+                                <h3 className="text-white font-bold text-base">Donate</h3>
+                                <p className="text-white/40 text-[11px] mt-0.5">Support Work</p>
+                            </div>
+                        </motion.a>
+                    </div>
                 </div>
 
                 {/* System Info */}
