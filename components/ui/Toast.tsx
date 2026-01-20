@@ -10,6 +10,10 @@ interface ToastProps {
     isVisible: boolean;
     onClose: () => void;
     duration?: number;
+    action?: {
+        label: string;
+        onClick: () => void;
+    };
 }
 
 export default function Toast({
@@ -17,7 +21,8 @@ export default function Toast({
     type = "success",
     isVisible,
     onClose,
-    duration = 2000
+    duration = 2000,
+    action
 }: ToastProps) {
     useEffect(() => {
         if (isVisible && duration > 0) {
@@ -54,9 +59,22 @@ export default function Toast({
                     }}
                     className={`fixed top-6 left-1/2 -translate-x-1/2 z-[200] ${colors[type]} backdrop-blur-lg rounded-2xl px-6 py-4 shadow-2xl border border-white/20`}
                 >
-                    <div className="flex items-center gap-3 text-white">
-                        {icons[type]}
-                        <span className="font-medium text-sm">{message}</span>
+                    <div className="flex items-center gap-4 text-white">
+                        <div className="flex items-center gap-3">
+                            {icons[type]}
+                            <span className="font-medium text-sm">{message}</span>
+                        </div>
+                        {action && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    action.onClick();
+                                }}
+                                className="bg-white/20 hover:bg-white/30 transition-colors px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap border border-white/20"
+                            >
+                                {action.label}
+                            </button>
+                        )}
                     </div>
                 </motion.div>
             )}

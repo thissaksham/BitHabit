@@ -66,6 +66,11 @@ export default function PWAManager() {
             message={toastMessage}
             onClose={() => setShowToast(false)}
             type="info"
+            duration={installPrompt ? 0 : 5000}
+            action={installPrompt ? {
+                label: "Install",
+                onClick: handleInstall
+            } : undefined}
         />
     );
 }
