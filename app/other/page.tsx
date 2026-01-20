@@ -117,7 +117,7 @@ export default function OtherPage() {
                     {/* Support Card */}
                     <div className="grid grid-cols-2 gap-4">
                         <motion.a
-                            href="https://github.com/thissaksham/habit-tracker-app"
+                            href="https://github.com/thissaksham/BitHabit"
                             target="_blank"
                             rel="noopener noreferrer"
                             initial={{ opacity: 0, scale: 0.95 }}
