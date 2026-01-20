@@ -20,9 +20,20 @@ export const viewport: Viewport = {
     themeColor: "#0a0a0a",
 };
 
+const basePath = process.env.NODE_ENV === "production" ? "/BitHabit" : "";
+
 export const metadata: Metadata = {
     title: "BitHabit - Track Your Daily Goals",
     description: "Mobile-first habit tracker app",
+    manifest: `${basePath}/manifest.json`,
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: "default",
+        title: "BitHabit",
+    },
+    formatDetection: {
+        telephone: false,
+    },
 };
 
 export default function RootLayout({
@@ -32,6 +43,20 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            window.deferredPrompt = null;
+                            window.addEventListener('beforeinstallprompt', (e) => {
+                                e.preventDefault();
+                                window.deferredPrompt = e;
+                                if (window.onPwaInstallReady) window.onPwaInstallReady(e);
+                            });
+                        `,
+                    }}
+                />
+            </head>
             <body className={inter.variable}>
                 <ErrorBoundary>
                     <div id="root-container">

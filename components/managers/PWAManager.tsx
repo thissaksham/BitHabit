@@ -9,15 +9,26 @@ export default function PWAManager() {
     const [toastMessage, setToastMessage] = useState("");
 
     useEffect(() => {
-        // Handle installation prompt
-        const handler = (e: any) => {
-            e.preventDefault();
+        const checkPrompt = () => {
+            const prompt = (window as any).deferredPrompt;
+            if (prompt) {
+                console.log("PWA: Using captured prompt");
+                setInstallPrompt(prompt);
+                setToastMessage("Add BitHabit to your home screen for a better experience!");
+                setShowToast(true);
+            }
+        };
+
+        // Check if already captured
+        checkPrompt();
+
+        // Register listener for if it fires after mount
+        (window as any).onPwaInstallReady = (e: any) => {
+            console.log("PWA: Prompt ready via callback");
             setInstallPrompt(e);
             setToastMessage("Add BitHabit to your home screen for a better experience!");
             setShowToast(true);
         };
-
-        window.addEventListener("beforeinstallprompt", handler);
 
         // Handle service worker updates
         if ("serviceWorker" in navigator) {
@@ -29,7 +40,9 @@ export default function PWAManager() {
             });
         }
 
-        return () => window.removeEventListener("beforeinstallprompt", handler);
+        return () => {
+            (window as any).onPwaInstallReady = null;
+        };
     }, []);
 
     const handleInstall = async () => {
@@ -61,16 +74,18 @@ export default function PWAManager() {
     }, []);
 
     return (
-        <Toast
-            isVisible={showToast}
-            message={toastMessage}
-            onClose={() => setShowToast(false)}
-            type="info"
-            duration={installPrompt ? 0 : 5000}
-            action={installPrompt ? {
-                label: "Install",
-                onClick: handleInstall
-            } : undefined}
-        />
+        <>
+            <Toast
+                isVisible={showToast}
+                message={toastMessage}
+                onClose={() => setShowToast(false)}
+                type="info"
+                duration={installPrompt ? 0 : 5000}
+                action={installPrompt ? {
+                    label: "Install",
+                    onClick: handleInstall
+                } : undefined}
+            />
+        </>
     );
 }
