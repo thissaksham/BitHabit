@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-    title: "Habits - Track Your Daily Goals",
+    title: "BitHabit - Track Your Daily Goals",
     description: "Mobile-first habit tracker app",
 };
 

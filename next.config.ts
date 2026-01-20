@@ -7,6 +7,7 @@ const nextConfig = {
         ignoreDuringBuilds: false,
     },
     output: "export",
+    basePath: "/BitHabit",
     images: {
         unoptimized: true,
     },
