@@ -25,7 +25,6 @@ const basePath = process.env.NODE_ENV === "production" ? "/BitHabit" : "";
 export const metadata: Metadata = {
     title: "BitHabit - Track Your Daily Goals",
     description: "Mobile-first habit tracker app",
-    manifest: `${basePath}/manifest.json`,
     appleWebApp: {
         capable: true,
         statusBarStyle: "default",

@@ -10,6 +10,9 @@ export default function PWAManager() {
 
     useEffect(() => {
         const checkPrompt = () => {
+            const isDismissed = localStorage.getItem("pwa-prompt-dismissed");
+            if (isDismissed) return;
+
             const prompt = (window as any).deferredPrompt;
             if (prompt) {
                 console.log("PWA: Using captured prompt");
@@ -24,6 +27,9 @@ export default function PWAManager() {
 
         // Register listener for if it fires after mount
         (window as any).onPwaInstallReady = (e: any) => {
+            const isDismissed = localStorage.getItem("pwa-prompt-dismissed");
+            if (isDismissed) return;
+
             console.log("PWA: Prompt ready via callback");
             setInstallPrompt(e);
             setToastMessage("Add BitHabit to your home screen for a better experience!");
@@ -50,7 +56,9 @@ export default function PWAManager() {
         installPrompt.prompt();
         const { outcome } = await installPrompt.userChoice;
         if (outcome === "accepted") {
+            localStorage.setItem("pwa-prompt-dismissed", "true");
             setInstallPrompt(null);
+            setShowToast(false);
         }
     };
 
@@ -78,7 +86,12 @@ export default function PWAManager() {
             <Toast
                 isVisible={showToast}
                 message={toastMessage}
-                onClose={() => setShowToast(false)}
+                onClose={() => {
+                    setShowToast(false);
+                    if (installPrompt) {
+                        localStorage.setItem("pwa-prompt-dismissed", "true");
+                    }
+                }}
                 type="info"
                 duration={installPrompt ? 0 : 5000}
                 action={installPrompt ? {

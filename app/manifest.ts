@@ -15,6 +15,8 @@ export default function manifest(): MetadataRoute.Manifest {
         theme_color: '#0a0a0a',
         orientation: 'portrait',
         scope: `${basePath}/`,
+        id: `${basePath}/`,
+        categories: ['productivity', 'utilities'],
         icons: [
             {
                 src: `${basePath}/icon-192.png`,
@@ -41,5 +43,12 @@ export default function manifest(): MetadataRoute.Manifest {
                 purpose: 'maskable',
             },
         ],
+        shortcuts: [
+            {
+                name: 'New Habit',
+                url: `${basePath}/`,
+                icons: [{ src: `${basePath}/icon-192.png`, sizes: '192x192' }]
+            }
+        ]
     }
 }
